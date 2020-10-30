@@ -18,6 +18,15 @@ public abstract class Book implements StoreMediaOperations {
         this.title = anotherBook.title;
         this.author = anotherBook.author;
     }
+    public void setID(UUID iD){
+        this.id = iD;
+    }
+    public void setTitle(String t){
+        this.title = t;
+    }
+    public void setAuthor(String a){
+        this.author = a;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -37,11 +46,9 @@ public abstract class Book implements StoreMediaOperations {
         // The bug is caught when
         //  1. newly add tests fail while all old tests still pass
         //  2. remove the bug and use the fix below, all tests pass
-        return id.equals(theOtherBook.id) &&
-                author.equals(theOtherBook.author) &&
-                title.equals(theOtherBook.title);
+        //return id.equals(theOtherBook.id) && author.equals(theOtherBook.author) && title.equals(theOtherBook.title);
 
         // fix is here
-        // return id.equals(theOtherBook.id);
+        return id.equals(theOtherBook.id);
     }
 }

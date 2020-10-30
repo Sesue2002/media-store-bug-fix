@@ -1,17 +1,50 @@
 import Problem3.*;
 import org.junit.Test;
 
+import java.util.UUID;
+
 import static org.junit.Assert.*;
 
 public class Problem3Test {
     @Test
     public void catchTheBugInBook() {
         // quiz
+        UUID newID = UUID.randomUUID();
+
+        BookRomance lov = new BookRomance("t1", "au1");
+        BookRomance vol = new BookRomance(lov);
+
+        lov.setTitle("What is love, baby don't hurt me, don't hurt me, no more");
+        lov.setAuthor("Haddaway");
+
+        assertTrue(lov.equals(vol));
+
+        lov.setID(newID);
+
+        assertFalse(lov.equals(vol));
     }
 
     @Test
     public void catchTheBugInMovie() {
         // quiz
+        UUID newID1 = UUID.randomUUID();
+
+        MovieAction TI = new MovieAction("PG13", "TI-84");
+        MovieAction IT = new MovieAction(TI);
+
+        TI.setRating("GG");
+        TI.setTitle("2080 TI");
+
+        assertTrue(TI.equals(IT));
+        //Displays assertion error saying it is not true which is should be, should stay true since we didn't change the id
+        //if you use the old fix ;(
+        //but new fix  says its the same which is quality :)
+        TI.setID(newID1);
+
+        assertFalse(TI.equals(IT));
+
+        //now if i used my change id setter it should return true based on the the ids being different
+        //fails for the old and works for the new
     }
 
     // DO NOT REMOVE OR CHANGE ANYTHING BELOW THIS!
